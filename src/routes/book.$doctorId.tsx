@@ -114,7 +114,7 @@ function BookingPage() {
                   <div>
                     <h3 className="font-display font-semibold mb-3">{lang === "ar" ? "نوع الاستشارة" : "Consultation type"}</h3>
                     <div className="grid grid-cols-3 gap-2">
-                      {doctor.consultationTypes.map((tp) => {
+                      {doctor.consultationTypes.map((tp: "clinic" | "online" | "home") => {
                         const Icon = typeIcon[tp];
                         return (
                           <button

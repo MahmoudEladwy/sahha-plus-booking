@@ -108,7 +108,7 @@ function DoctorPage() {
                 </div>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {doctor.consultationTypes.map((type) => {
+                  {doctor.consultationTypes.map((type: "clinic" | "online" | "home") => {
                     const Icon = typeIcon[type];
                     return (
                       <div key={type} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border/40 text-xs font-medium">
@@ -157,7 +157,7 @@ function DoctorPage() {
                       <Languages className="h-3.5 w-3.5" /> {t("doctor.languages")}
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {doctor.languages.map((l) => (
+                      {doctor.languages.map((l: string) => (
                         <span key={l} className="px-3 py-1.5 rounded-full bg-secondary text-xs font-medium">{l}</span>
                       ))}
                     </div>
@@ -167,7 +167,7 @@ function DoctorPage() {
                       <Shield className="h-3.5 w-3.5" /> {t("doctor.insurance")}
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {doctor.insurances.map((l) => (
+                      {doctor.insurances.map((l: string) => (
                         <span key={l} className="px-3 py-1.5 rounded-full bg-mint/30 text-mint-foreground text-xs font-medium">{l}</span>
                       ))}
                     </div>
@@ -177,7 +177,7 @@ function DoctorPage() {
 
               <Card title={t("doctor.location")}>
                 <div className="space-y-3">
-                  {doctor.branches.map((b, i) => (
+                  {doctor.branches.map((b: { name: string; address: string }, i: number) => (
                     <div key={i} className="flex items-start gap-3 p-3 rounded-2xl bg-secondary/50">
                       <MapPin className="h-5 w-5 text-gold mt-0.5 shrink-0" />
                       <div>
