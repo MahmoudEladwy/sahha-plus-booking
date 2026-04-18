@@ -10,6 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as PatientRouteImport } from './routes/patient'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForDoctorsRouteImport } from './routes/for-doctors'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as DoctorRouteImport } from './routes/doctor'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DoctorsDoctorIdRouteImport } from './routes/doctors.$doctorId'
 import { Route as BookDoctorIdRouteImport } from './routes/book.$doctorId'
@@ -17,6 +24,41 @@ import { Route as BookDoctorIdRouteImport } from './routes/book.$doctorId'
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatientRoute = PatientRouteImport.update({
+  id: '/patient',
+  path: '/patient',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForDoctorsRoute = ForDoctorsRouteImport.update({
+  id: '/for-doctors',
+  path: '/for-doctors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoctorRoute = DoctorRouteImport.update({
+  id: '/doctor',
+  path: '/doctor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,12 +79,26 @@ const BookDoctorIdRoute = BookDoctorIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/doctor': typeof DoctorRoute
+  '/faq': typeof FaqRoute
+  '/for-doctors': typeof ForDoctorsRoute
+  '/login': typeof LoginRoute
+  '/patient': typeof PatientRoute
   '/search': typeof SearchRoute
   '/book/$doctorId': typeof BookDoctorIdRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/doctor': typeof DoctorRoute
+  '/faq': typeof FaqRoute
+  '/for-doctors': typeof ForDoctorsRoute
+  '/login': typeof LoginRoute
+  '/patient': typeof PatientRoute
   '/search': typeof SearchRoute
   '/book/$doctorId': typeof BookDoctorIdRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
@@ -50,20 +106,68 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/doctor': typeof DoctorRoute
+  '/faq': typeof FaqRoute
+  '/for-doctors': typeof ForDoctorsRoute
+  '/login': typeof LoginRoute
+  '/patient': typeof PatientRoute
   '/search': typeof SearchRoute
   '/book/$doctorId': typeof BookDoctorIdRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/search' | '/book/$doctorId' | '/doctors/$doctorId'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/doctor'
+    | '/faq'
+    | '/for-doctors'
+    | '/login'
+    | '/patient'
+    | '/search'
+    | '/book/$doctorId'
+    | '/doctors/$doctorId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/search' | '/book/$doctorId' | '/doctors/$doctorId'
-  id: '__root__' | '/' | '/search' | '/book/$doctorId' | '/doctors/$doctorId'
+  to:
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/doctor'
+    | '/faq'
+    | '/for-doctors'
+    | '/login'
+    | '/patient'
+    | '/search'
+    | '/book/$doctorId'
+    | '/doctors/$doctorId'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/doctor'
+    | '/faq'
+    | '/for-doctors'
+    | '/login'
+    | '/patient'
+    | '/search'
+    | '/book/$doctorId'
+    | '/doctors/$doctorId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  ContactRoute: typeof ContactRoute
+  DoctorRoute: typeof DoctorRoute
+  FaqRoute: typeof FaqRoute
+  ForDoctorsRoute: typeof ForDoctorsRoute
+  LoginRoute: typeof LoginRoute
+  PatientRoute: typeof PatientRoute
   SearchRoute: typeof SearchRoute
   BookDoctorIdRoute: typeof BookDoctorIdRoute
   DoctorsDoctorIdRoute: typeof DoctorsDoctorIdRoute
@@ -76,6 +180,55 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patient': {
+      id: '/patient'
+      path: '/patient'
+      fullPath: '/patient'
+      preLoaderRoute: typeof PatientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/for-doctors': {
+      id: '/for-doctors'
+      path: '/for-doctors'
+      fullPath: '/for-doctors'
+      preLoaderRoute: typeof ForDoctorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doctor': {
+      id: '/doctor'
+      path: '/doctor'
+      fullPath: '/doctor'
+      preLoaderRoute: typeof DoctorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -104,6 +257,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  ContactRoute: ContactRoute,
+  DoctorRoute: DoctorRoute,
+  FaqRoute: FaqRoute,
+  ForDoctorsRoute: ForDoctorsRoute,
+  LoginRoute: LoginRoute,
+  PatientRoute: PatientRoute,
   SearchRoute: SearchRoute,
   BookDoctorIdRoute: BookDoctorIdRoute,
   DoctorsDoctorIdRoute: DoctorsDoctorIdRoute,
